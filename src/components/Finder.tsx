@@ -1,0 +1,56 @@
+import './Finder.css';
+import Counter1 from '../assets/icons/counter_1.svg';
+import Counter2 from '../assets/icons/counter_2.svg';
+import Counter3 from '../assets/icons/counter_3.svg';
+import { FinderProps, SchoolRegimen, SchoolType } from '../types/types';
+import { Btn } from './Btn';
+export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setType }: FinderProps) {
+
+    const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setZipCode(Number(e.target.value));
+    }
+
+    return (
+        <>
+        <section className="finder">
+            <div className="step">
+                <div className="title">
+                <img src={Counter1} alt="" />
+                <span>Introduce el código postal donde resides</span>
+                </div>
+                <div className="input">
+                <input type="number" placeholder="46113" value={zipCode} onChange={handleZipCodeChange} />
+                </div>
+            </div>
+            <div className="step">
+                <div className="title">
+                <img src={Counter2} alt="" />
+                <span>Selecciona el régimen del centro</span>
+                </div>
+                <div className="btns">
+                    <Btn text="Público" value={SchoolRegimen.Public} selected={regimens.includes(SchoolRegimen.Public)} setSelected={setRegimen}/>
+                    <Btn text="Privado" value={SchoolRegimen.Private} selected={regimens.includes(SchoolRegimen.Private)} setSelected={setRegimen}/>
+                    <Btn text="Priv. concertado" value={SchoolRegimen.PrivateConc} selected={regimens.includes(SchoolRegimen.PrivateConc)} setSelected={setRegimen}/>
+                </div>
+            </div>
+            <div className="step">
+                <div className="title">
+                <img src={Counter3} alt="" />
+                <span>Selecciona el tipo del centro (selección múltiple)</span>
+                </div>
+                <div className="btns">
+                    <Btn text="Infantil" value={SchoolType.Infantil} selected={types.includes(SchoolType.Infantil)} setSelected={setType}/>
+                    <Btn text="Primaria" value={SchoolType.Primaria} selected={types.includes(SchoolType.Primaria)} setSelected={setType}/>
+                    <Btn text="Especial" value={SchoolType.Especial} selected={types.includes(SchoolType.Especial)} setSelected={setType}/>
+                    <Btn text="ESO" value={SchoolType.ESO} selected={types.includes(SchoolType.ESO)} setSelected={setType}/>
+                </div>
+                <div className="btns">
+                    <Btn text="Bachillerato" value={SchoolType.Bachillerato} selected={types.includes(SchoolType.Bachillerato)} setSelected={setType}/>
+                    <Btn text="FP" value={SchoolType.FP} selected={types.includes(SchoolType.FP)} setSelected={setType}/>
+                    <Btn text="Adultos" value={SchoolType.Adultos} selected={types.includes(SchoolType.Adultos)} setSelected={setType}/>
+                </div>
+            </div>
+        </section>
+        </>
+    )
+}

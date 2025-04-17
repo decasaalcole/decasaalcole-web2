@@ -1,0 +1,61 @@
+export enum SchoolRegimen {
+    Public = 'Pub',
+    Private = 'Priv',
+    PrivateConc = 'PrivConc',
+    All = 'all',
+}
+
+export enum SchoolType {
+    Infantil = 'inf',
+    Primaria = 'pri',
+    Especial = 'esp',
+    ESO = 'eso',
+    Bachillerato = 'bac',
+    FP = 'fp',
+    Adultos = 'adu',
+    All = 'all',
+}
+
+export interface FinderProps {
+    zipCode: number;
+    setZipCode: (zipCode: number) => void;
+    regimens: SchoolRegimen[];
+    setRegimen: any;
+    types: SchoolType[];
+    setType: any;
+}
+
+export interface BtnProps {
+    text: string;
+    value: SchoolRegimen | SchoolType;
+    selected: boolean;
+    setSelected: any;
+}
+
+export interface School {
+    Codigo: number;
+    Denominacion_Generica_ES: string;
+    Denominacion_Generica_VAL: string;
+    Denominacion_Especifica: string;
+    Denominacion: string;
+    Regimen: string;
+    Tipo_Via: string;
+    Direccion: string;
+    Num: string;
+    Codigo_postal: number;
+    Localidad: string;
+    Provincia: string;
+    Telefono: number;
+    Fax: string;
+    COD_EDIFICACION: number;
+    long: string;
+    lat: string;
+    Titularidad: string;
+    CIF: string;
+    Comarca: string;
+}
+
+export interface RawTime {
+    Codigo: number;
+    Denominacion: string;
+}
