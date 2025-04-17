@@ -1,4 +1,4 @@
-import { School, SchoolRegimen } from "../types/types";
+import { School, SchoolRegimen, SchoolType } from "../types/types";
 
 
 export function filterSchoolsByZipCode  (schools: School[], zipCode: number) {
