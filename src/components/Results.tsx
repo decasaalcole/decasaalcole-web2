@@ -8,12 +8,14 @@ export function Results({ schools }: { schools: School[] }) {
         <>
         <div className="results">            
             <h2>Listado de colegios ordenados</h2>
+            <div className="total">{schools.length} colegios encontrados</div>
             {schools.length === 0 ? (
                 <div className="no-results">
                     <img src={noResults} alt="" />
                     <p>No se han encontrado colegios con los criterios seleccionados</p>
                 </div>
             ) : (
+                
                 schools.map((school) => (
                     <CardSchool key={school.Codigo} school={school} />
                 ))
