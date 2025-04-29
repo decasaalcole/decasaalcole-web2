@@ -16,6 +16,11 @@ export enum SchoolType {
     All = 'all',
 }
 
+export enum SchoolDayType {
+    Intensive = 'int',
+    Splitted = 'par',
+}
+
 export interface FinderProps {
     zipCode: number;
     setZipCode: (zipCode: number) => void;
@@ -23,11 +28,13 @@ export interface FinderProps {
     setRegimen: any;
     types: SchoolType[];
     setType: any;
+    dayTypes: SchoolDayType[];
+    setDayTypes: any;
 }
 
 export interface BtnProps {
     text: string;
-    value: SchoolRegimen | SchoolType;
+    value: SchoolRegimen | SchoolType | SchoolDay;
     selected: boolean;
     setSelected: any;
 }

@@ -2,9 +2,10 @@ import './Finder.css';
 import Counter1 from '../assets/icons/counter_1.svg';
 import Counter2 from '../assets/icons/counter_2.svg';
 import Counter3 from '../assets/icons/counter_3.svg';
-import { FinderProps, SchoolRegimen, SchoolType } from '../types/types';
+import Counter4 from '../assets/icons/counter_4.svg';
+import { FinderProps, SchoolRegimen, SchoolType, SchoolDayType } from '../types/types';
 import { Btn } from './Btn';
-export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setType }: FinderProps) {
+export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setType, dayTypes, setDayTypes }: FinderProps) {
 
     const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setZipCode(Number(e.target.value));
@@ -48,6 +49,16 @@ export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setTy
                     <Btn text="Bachillerato" value={SchoolType.Bachillerato} selected={types.includes(SchoolType.Bachillerato)} setSelected={setType}/>
                     <Btn text="FP" value={SchoolType.FP} selected={types.includes(SchoolType.FP)} setSelected={setType}/>
                     <Btn text="Adultos" value={SchoolType.Adultos} selected={types.includes(SchoolType.Adultos)} setSelected={setType}/>
+                </div>
+            </div>
+            <div className="step">
+                <div className="title">
+                <img src={Counter4} alt="" />
+                <span>Selecciona el tipo de jornada </span>
+                </div>
+                <div className="btns">
+                    <Btn text="Intensiva" value={SchoolDayType.Intensive} selected={dayTypes.includes(SchoolDayType.Intensive)} setSelected={setDayTypes}/>
+                    <Btn text="Partida" value={SchoolDayType.Splitted} selected={dayTypes.includes(SchoolDayType.Splitted)} setSelected={setDayTypes}/>
                 </div>
             </div>
         </section>

@@ -54,12 +54,12 @@
         align-items: center;
         justify-content: center;
         border-radius: 0px;
-        &:first-child {
+        button:first-child {
           border-radius: 5px 0px 0px 5px;
         }
-        &:last-child {
+        button:last-child {
           border-radius: 0px 5px 5px 0px;
-        } 
+        }
 
       }
     }

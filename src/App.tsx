@@ -2,7 +2,7 @@ import { Header } from './components/Header.tsx'
 import { Finder } from './components/Finder.tsx'
 import { Results } from './components/Results.tsx'
 import { useEffect, useState } from 'react';
-import { SchoolRegimen, SchoolType, School } from './types/types.ts';
+import { SchoolRegimen, SchoolType, School, SchoolDayType } from './types/types.ts';
 import rawSchools from './assets/data/schools.json';
 import { filterSchoolsByRegimen, filterSchoolsByZipCode } from './helpers/school.helper.ts';
 // import rawTimes from './assets/data/times.json';
@@ -12,6 +12,7 @@ function App() {
   const [regimens, setRegimen] = useState([SchoolRegimen.Public]);
   const [types, setType] = useState([SchoolType.Infantil]);
   const [schools, setSchools] = useState<School[]>([]);
+  const [dayTypes, setDayTypes] = useState([SchoolDayType.Intensive, SchoolDayType.Splitted]);
 
   useEffect(() => {
     const filteredSchoolsByZipCode = filterSchoolsByZipCode(rawSchools as School[], zipCode);
@@ -44,11 +45,26 @@ function App() {
     }
   }
 
+  const handleDayTypesChange = (value: SchoolDayType) => {
+    if (dayTypes.includes(value)) {
+      setDayTypes(prev => prev.filter(dayType => dayType !== value));
+    } else {
+      setDayTypes(prev => [...prev, value]);
+    }
+    if (dayTypes.length === 0) {
+      setDayTypes([SchoolDayType.Intensive, SchoolDayType.Splitted]);
+    }
+  }
+
   if (regimens.length === 0) {
     setRegimen([SchoolRegimen.Public, SchoolRegimen.Private, SchoolRegimen.PrivateConc]);
   }
   if (types.length === 0) {
     setType([SchoolType.Primaria, SchoolType.Infantil, SchoolType.Especial, SchoolType.ESO, SchoolType.Bachillerato, SchoolType.FP, SchoolType.Adultos]);
+  }
+
+  if (dayTypes.length === 0) {
+    setDayTypes([SchoolDayType.Intensive, SchoolDayType.Splitted]);
   }
 
   return (
@@ -61,6 +77,8 @@ function App() {
         setRegimen={handleRegimenChange} 
         types={types} 
         setType={handleTypeChange} 
+        dayTypes={dayTypes}
+        setDayTypes={handleDayTypesChange}
       />
       <Results schools={schools} />
     </>
