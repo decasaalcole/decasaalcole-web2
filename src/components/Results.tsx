@@ -2,6 +2,7 @@ import './Results.css';
 import { School } from '../types/types';
 import { CardSchool } from './CardSchool';
 import noResults from '../assets/icons/no_results.svg';
+import { DownloadBtn } from './DownloadBtn';
 
 export function Results({ schools }: { schools: School[] }) {
     return (
@@ -20,6 +21,9 @@ export function Results({ schools }: { schools: School[] }) {
                     <CardSchool key={school.Codigo} school={school} />
                 ))
             )}
+            <div className="results-footer">
+                <DownloadBtn />
+            </div>
         </div>
         </>
     )
