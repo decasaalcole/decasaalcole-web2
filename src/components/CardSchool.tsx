@@ -15,7 +15,7 @@ export function CardSchool({ school }: { school: School }) {
     }
 
     const handleMoreInfo = () => {
-        window.open(`https://www.google.com/maps/search/?api=1&query=${school.lat},${school.long}`, '_blank');
+        window.open(`https://ceice.gva.es/es/web/centros-docentes/consulta-general?viewUrl162652993=/abc/i_guiadecentros/es/centro.asp&codi=${school.Codigo}`, '_blank');
     }
 
     return (
