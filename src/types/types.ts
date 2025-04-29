@@ -21,6 +21,12 @@ export enum SchoolDayType {
     Splitted = 'par',
 }
 
+export enum Province {
+    Castellon = 'Cas',
+    Valencia = 'Val',
+    Alicante = 'Ali',
+}
+
 export interface FinderProps {
     zipCode: number;
     setZipCode: (zipCode: number) => void;
@@ -30,11 +36,13 @@ export interface FinderProps {
     setType: any;
     dayTypes: SchoolDayType[];
     setDayTypes: any;
+    province: Province[];
+    setProvince: any;
 }
 
 export interface BtnProps {
     text: string;
-    value: SchoolRegimen | SchoolType | SchoolDay;
+    value: SchoolRegimen | SchoolType | SchoolDayType | Province;
     selected: boolean;
     setSelected: any;
 }

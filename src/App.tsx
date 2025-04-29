@@ -2,10 +2,9 @@ import { Header } from './components/Header.tsx'
 import { Finder } from './components/Finder.tsx'
 import { Results } from './components/Results.tsx'
 import { useEffect, useState } from 'react';
-import { SchoolRegimen, SchoolType, School, SchoolDayType } from './types/types.ts';
+import { SchoolRegimen, SchoolType, School, SchoolDayType, Province } from './types/types.ts';
 import rawSchools from './assets/data/schools.json';
 import { filterSchoolsByRegimen, filterSchoolsByZipCode } from './helpers/school.helper.ts';
-// import rawTimes from './assets/data/times.json';
 
 function App() {
   const [zipCode, setZipCode] = useState(46113);
@@ -13,6 +12,7 @@ function App() {
   const [types, setType] = useState([SchoolType.Infantil]);
   const [schools, setSchools] = useState<School[]>([]);
   const [dayTypes, setDayTypes] = useState([SchoolDayType.Intensive, SchoolDayType.Splitted]);
+  const [province, setProvince] = useState([Province.Castellon, Province.Valencia, Province.Alicante]);
 
   useEffect(() => {
     const filteredSchoolsByZipCode = filterSchoolsByZipCode(rawSchools as School[], zipCode);
@@ -56,6 +56,14 @@ function App() {
     }
   }
 
+  const handleProvinceChange = (value: Province) => {
+    if (province.includes(value)) {
+      setProvince(prev => prev.filter(prov => prov !== value));
+    } else {
+      setProvince(prev => [...prev, value]);
+    }
+  }
+
   if (regimens.length === 0) {
     setRegimen([SchoolRegimen.Public, SchoolRegimen.Private, SchoolRegimen.PrivateConc]);
   }
@@ -65,6 +73,9 @@ function App() {
 
   if (dayTypes.length === 0) {
     setDayTypes([SchoolDayType.Intensive, SchoolDayType.Splitted]);
+  }
+  if (province.length === 0) {
+    setProvince([Province.Castellon, Province.Valencia, Province.Alicante]);
   }
 
   return (
@@ -79,6 +90,8 @@ function App() {
         setType={handleTypeChange} 
         dayTypes={dayTypes}
         setDayTypes={handleDayTypesChange}
+        province={province}
+        setProvince={handleProvinceChange}
       />
       <Results schools={schools} />
     </>
