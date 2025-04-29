@@ -68,7 +68,7 @@
         .title {
             font-size: 18px;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: var(--dark-blue-gray-color);
             margin: 0;
         }
 
@@ -95,6 +95,18 @@
                 margin: 0;
             }
         }
+    }
+
+    .card-school-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 5px;
+        flex-direction: row;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        
+        width: 100%;
     }
 
 

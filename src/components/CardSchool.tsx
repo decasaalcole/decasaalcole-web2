@@ -2,6 +2,7 @@ import { buildAddress } from "../helpers/school.helper";
 import { School } from "../types/types";
 import Home from '../assets/icons/home.svg';
 import Phone from '../assets/icons/phone.svg';
+import { CardBtn } from './CardBtn';
 import './CardSchool.css';
 export function CardSchool({ school }: { school: School }) {
     return (
@@ -25,7 +26,11 @@ export function CardSchool({ school }: { school: School }) {
                     <p>{school.Telefono}</p>
                 </div>
             </div>
-            <div className="card-school-footer"></div>
+            <div className="card-school-footer">
+                <CardBtn text="Llamar" action={() => {}} />
+                <CardBtn text="Localizar" action={() => {}} />
+                <CardBtn text="Más Info" action={() => {}} />
+            </div>
         </div>
     )
 }

@@ -44,9 +44,10 @@ export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setTy
                     <Btn text="Infantil" value={SchoolType.Infantil} selected={types.includes(SchoolType.Infantil)} setSelected={setType}/>
                     <Btn text="Primaria" value={SchoolType.Primaria} selected={types.includes(SchoolType.Primaria)} setSelected={setType}/>
                     <Btn text="Especial" value={SchoolType.Especial} selected={types.includes(SchoolType.Especial)} setSelected={setType}/>
-                    <Btn text="ESO" value={SchoolType.ESO} selected={types.includes(SchoolType.ESO)} setSelected={setType}/>
+                    <Btn text="C.R.A." value={SchoolType.CRA} selected={types.includes(SchoolType.CRA)} setSelected={setType}/>
                 </div>
                 <div className="btns">
+                    <Btn text="E.S.O." value={SchoolType.ESO} selected={types.includes(SchoolType.ESO)} setSelected={setType}/>
                     <Btn text="Bachillerato" value={SchoolType.Bachillerato} selected={types.includes(SchoolType.Bachillerato)} setSelected={setType}/>
                     <Btn text="FP" value={SchoolType.FP} selected={types.includes(SchoolType.FP)} setSelected={setType}/>
                     <Btn text="Adultos" value={SchoolType.Adultos} selected={types.includes(SchoolType.Adultos)} setSelected={setType}/>

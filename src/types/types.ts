@@ -9,6 +9,7 @@ export enum SchoolType {
     Infantil = 'inf',
     Primaria = 'pri',
     Especial = 'esp',
+    CRA = 'cra',
     ESO = 'eso',
     Bachillerato = 'bac',
     FP = 'fp',
@@ -45,6 +46,11 @@ export interface BtnProps {
     value: SchoolRegimen | SchoolType | SchoolDayType | Province;
     selected: boolean;
     setSelected: any;
+}
+
+export interface CardBtnProps {
+    text: string;
+    action: () => void;
 }
 
 export interface School {
