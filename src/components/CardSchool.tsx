@@ -8,8 +8,13 @@ export function CardSchool({ school }: { school: School }) {
         <div className="card-school">
             <div className="card-school-header">
                 <p className="code">{school.Codigo}</p>
+                <div className="distance">
+                    <p className="time">20 min</p>
+                    <p className="km">1 km</p>
+                </div>
             </div>
             <div className="card-school-body">
+                <p className="title">{school.Denominacion_Especifica}</p>
                 <p className="subtitle">{school.Denominacion_Generica_VAL}</p>
                 <div className="address">
                     <img src={Home} alt="Home" />
