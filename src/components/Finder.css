@@ -5,10 +5,10 @@
     flex-direction: column;
     margin: 25px 15px 15px 15px;
     font-family: "Roboto", sans-serif;
-    color: #444;
+    color: var(--dark-gray-color);
     border-radius: 10px;
     padding-bottom: 5px;
-    background-color: #fff;
+    background-color: var(--white-color);
     align-items: center;
     .step {
       align-items: center;
@@ -35,7 +35,7 @@
         input {
           width: 100%;
           padding: 10px;
-          border: 1px solid #ccc;
+          border: 1px solid var(--gray-color);
           border-radius: 5px;
           max-width: 100px;
           text-align: right;
@@ -69,9 +69,9 @@
       justify-content: center;
       width: 100%;
       button {
-        background-color: red;
+        background-color: var(--primary-color);
         border: none;
-        color: #fff;
+        color: var(--white-color);
         padding: 10px 20px;
         border-radius: 5px;
         font-size: 15px;
