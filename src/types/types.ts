@@ -17,14 +17,14 @@ export enum SchoolType {
 }
 
 export enum SchoolDayType {
-    Intensive = 'int',
+    Continue = 'cont',
     Splitted = 'par',
 }
 
 export enum Province {
-    Castellon = 'Cas',
-    Valencia = 'Val',
-    Alicante = 'Ali',
+    Castellon = 'cas',
+    Valencia = 'val',
+    Alicante = 'ala',
 }
 
 export interface FinderProps {

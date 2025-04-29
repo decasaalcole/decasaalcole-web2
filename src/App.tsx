@@ -11,7 +11,7 @@ function App() {
   const [regimens, setRegimen] = useState([SchoolRegimen.Public]);
   const [types, setType] = useState([SchoolType.Infantil]);
   const [schools, setSchools] = useState<School[]>([]);
-  const [dayTypes, setDayTypes] = useState([SchoolDayType.Intensive, SchoolDayType.Splitted]);
+  const [dayTypes, setDayTypes] = useState([SchoolDayType.Continue, SchoolDayType.Splitted]);
   const [province, setProvince] = useState([Province.Castellon, Province.Valencia, Province.Alicante]);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function App() {
       setDayTypes(prev => [...prev, value]);
     }
     if (dayTypes.length === 0) {
-      setDayTypes([SchoolDayType.Intensive, SchoolDayType.Splitted]);
+      setDayTypes([SchoolDayType.Continue, SchoolDayType.Splitted]);
     }
   }
 
@@ -72,7 +72,7 @@ function App() {
   }
 
   if (dayTypes.length === 0) {
-    setDayTypes([SchoolDayType.Intensive, SchoolDayType.Splitted]);
+    setDayTypes([SchoolDayType.Continue, SchoolDayType.Splitted]);
   }
   if (province.length === 0) {
     setProvince([Province.Castellon, Province.Valencia, Province.Alicante]);

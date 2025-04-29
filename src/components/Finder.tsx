@@ -58,7 +58,7 @@ export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setTy
                 <span>Selecciona el tipo de jornada </span>
                 </div>
                 <div className="btns">
-                    <Btn text="Intensiva" value={SchoolDayType.Intensive} selected={dayTypes.includes(SchoolDayType.Intensive)} setSelected={setDayTypes}/>
+                    <Btn text="Continua" value={SchoolDayType.Continue} selected={dayTypes.includes(SchoolDayType.Continue)} setSelected={setDayTypes}/>
                     <Btn text="Partida" value={SchoolDayType.Splitted} selected={dayTypes.includes(SchoolDayType.Splitted)} setSelected={setDayTypes}/>
                 </div>
             </div>
