@@ -4,7 +4,7 @@ import { Results } from './components/Results.tsx'
 import { useEffect, useState } from 'react';
 import { SchoolRegimen, SchoolType, School, SchoolDayType, Province } from './types/types.ts';
 import rawSchools from './assets/data/schools.json';
-import { filterSchoolsByRegimen, filterSchoolsByZipCode } from './helpers/school.helper.ts';
+import { filterSchoolsByDayType, filterSchoolsByType, filterSchoolsByProvince, filterSchoolsByRegimen, filterSchoolsByZipCode } from './helpers/school.helper.ts';
 
 function App() {
   const [zipCode, setZipCode] = useState(46113);
@@ -12,15 +12,21 @@ function App() {
   const [types, setType] = useState([SchoolType.Infantil]);
   const [schools, setSchools] = useState<School[]>([]);
   const [dayTypes, setDayTypes] = useState([SchoolDayType.Continue, SchoolDayType.Splitted]);
-  const [province, setProvince] = useState([Province.Castellon, Province.Valencia, Province.Alicante]);
+  const [provinces, setProvinces] = useState([Province.Castellon, Province.Valencia, Province.Alicante]);
 
   useEffect(() => {
     const filteredSchoolsByZipCode = filterSchoolsByZipCode(rawSchools as School[], zipCode);
-    console.log('filteredSchoolsByZipCode', filteredSchoolsByZipCode);
+    console.log('1. filteredSchoolsByZipCode', filteredSchoolsByZipCode);
     const filteredSchoolsByRegimen = filterSchoolsByRegimen(filteredSchoolsByZipCode, regimens);
-    console.log('filteredSchoolsByRegimen', filteredSchoolsByRegimen);
-    setSchools(filteredSchoolsByRegimen);
-  }, [regimens, zipCode]);
+    console.log('2. filteredSchoolsByRegimen', filteredSchoolsByRegimen);
+    const filteredSchoolsByType = filterSchoolsByType(filteredSchoolsByRegimen, types);
+    console.log('3. filteredSchoolsByType', filteredSchoolsByType);
+    const filteredSchoolsByDayType = filterSchoolsByDayType(filteredSchoolsByType, dayTypes);
+    console.log('4. filteredSchoolsByDayType', filteredSchoolsByDayType);
+    const filteredSchoolsByProvince = filterSchoolsByProvince(filteredSchoolsByDayType, provinces);
+    console.log('5. filteredSchoolsByProvince', filteredSchoolsByProvince);
+    setSchools(filteredSchoolsByProvince);
+  }, [regimens, zipCode, types, dayTypes, provinces]);
 
   const handleRegimenChange = (value: SchoolRegimen) => {
     console.log('value', value);
@@ -57,10 +63,10 @@ function App() {
   }
 
   const handleProvinceChange = (value: Province) => {
-    if (province.includes(value)) {
-      setProvince(prev => prev.filter(prov => prov !== value));
+    if (provinces.includes(value)) {
+      setProvinces(prev => prev.filter(prov => prov !== value));
     } else {
-      setProvince(prev => [...prev, value]);
+      setProvinces(prev => [...prev, value]);
     }
   }
 
@@ -74,8 +80,8 @@ function App() {
   if (dayTypes.length === 0) {
     setDayTypes([SchoolDayType.Continue, SchoolDayType.Splitted]);
   }
-  if (province.length === 0) {
-    setProvince([Province.Castellon, Province.Valencia, Province.Alicante]);
+  if (provinces.length === 0) {
+    setProvinces([Province.Castellon, Province.Valencia, Province.Alicante]);
   }
 
   return (
@@ -90,8 +96,8 @@ function App() {
         setType={handleTypeChange} 
         dayTypes={dayTypes}
         setDayTypes={handleDayTypesChange}
-        province={province}
-        setProvince={handleProvinceChange}
+        provinces={provinces}
+        setProvinces={handleProvinceChange}
       />
       <Results schools={schools} />
     </>

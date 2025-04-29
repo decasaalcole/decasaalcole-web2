@@ -21,9 +21,11 @@ export function Results({ schools }: { schools: School[] }) {
                     <CardSchool key={school.Codigo} school={school} />
                 ))
             )}
-            <div className="results-footer">
-                <DownloadBtn />
-            </div>
+            {schools.length > 0 && (
+                <div className="results-footer">
+                    <DownloadBtn />
+                </div>
+            )}
         </div>
         </>
     )

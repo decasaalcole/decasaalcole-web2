@@ -6,7 +6,7 @@ import Counter4 from '../assets/icons/counter_4.svg';
 import Counter5 from '../assets/icons/counter_5.svg';
 import { FinderProps, SchoolRegimen, SchoolType, SchoolDayType, Province } from '../types/types';
 import { Btn } from './Btn';
-export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setType, dayTypes, setDayTypes, province, setProvince }: FinderProps) {
+export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setType, dayTypes, setDayTypes, provinces, setProvinces }: FinderProps) {
 
     const handleZipCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setZipCode(Number(e.target.value));
@@ -69,9 +69,9 @@ export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setTy
                 <span>Selecciona la provincia</span>
                 </div>
                 <div className="btns">
-                    <Btn text="Castellón" value={Province.Castellon} selected={province.includes(Province.Castellon)} setSelected={setProvince}/>
-                    <Btn text="Valencia" value={Province.Valencia} selected={province.includes(Province.Valencia)} setSelected={setProvince}/>
-                    <Btn text="Alicante" value={Province.Alicante} selected={province.includes(Province.Alicante)} setSelected={setProvince}/>
+                    <Btn text="Castellón" value={Province.Castellon} selected={provinces.includes(Province.Castellon)} setSelected={setProvinces}/>
+                    <Btn text="Valencia" value={Province.Valencia} selected={provinces.includes(Province.Valencia)} setSelected={setProvinces}/>
+                    <Btn text="Alicante" value={Province.Alicante} selected={provinces.includes(Province.Alicante)} setSelected={setProvinces}/>
                 </div>
             </div>
         </section>

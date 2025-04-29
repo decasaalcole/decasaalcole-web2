@@ -37,8 +37,8 @@ export interface FinderProps {
     setType: any;
     dayTypes: SchoolDayType[];
     setDayTypes: any;
-    province: Province[];
-    setProvince: any;
+    provinces: Province[];
+    setProvinces: any;
 }
 
 export interface BtnProps {

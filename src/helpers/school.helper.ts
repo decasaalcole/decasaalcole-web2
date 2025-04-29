@@ -1,4 +1,4 @@
-import { School, SchoolRegimen, SchoolType } from "../types/types";
+import { School, SchoolDayType, SchoolRegimen, SchoolType, Province } from "../types/types";
 
 
 export function filterSchoolsByZipCode  (schools: School[], zipCode: number) {
@@ -14,9 +14,15 @@ export function filterSchoolsByRegimen(schools: School[], regimen: SchoolRegimen
 }
 
 export function filterSchoolsByType(schools: School[], type: SchoolType) {
-    return schools.filter((school: School) => {
-        return school.Tipo_Via === type;
-    });
+    return schools
+}
+
+export function filterSchoolsByDayType(schools: School[], dayType: SchoolDayType) {
+    return schools
+}
+
+export function filterSchoolsByProvince(schools: School[], provinces: Province[]) {
+    return schools
 }
 
 export function buildAddress(school: School) {
