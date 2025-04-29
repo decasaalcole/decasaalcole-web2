@@ -2,9 +2,22 @@ import { buildAddress } from "../helpers/school.helper";
 import { School } from "../types/types";
 import Home from '../assets/icons/home.svg';
 import Phone from '../assets/icons/phone.svg';
-import { CardBtn } from './CardBtn';
+import { CardBtn } from '../components/CardBtn';
 import './CardSchool.css';
 export function CardSchool({ school }: { school: School }) {
+
+    const handleCall = () => {
+        window.open(`tel:${school.Telefono}`, '_blank');
+    }
+
+    const handleMap = () => {
+        window.open(`https://www.google.com/maps/search/?api=1&query=${school.lat},${school.long}`, '_blank');
+    }
+
+    const handleMoreInfo = () => {
+        window.open(`https://www.google.com/maps/search/?api=1&query=${school.lat},${school.long}`, '_blank');
+    }
+
     return (
         <div className="card-school">
             <div className="card-school-header">
@@ -21,15 +34,19 @@ export function CardSchool({ school }: { school: School }) {
                     <img src={Home} alt="Home" />
                     <p>{buildAddress(school)}</p>
                 </div>
-                <div className="phone">
-                    <img src={Phone} alt="Phone" />
-                    <p>{school.Telefono}</p>
-                </div>
+                {school.Telefono && school.Telefono.toString().trim() !== '' && (
+                    <div className="phone">
+                        <img src={Phone} alt="Phone" />
+                        <p>{school.Telefono}</p>
+                    </div>
+                )}
             </div>
             <div className="card-school-footer">
-                <CardBtn text="Llamar" action={() => {}} />
-                <CardBtn text="Localizar" action={() => {}} />
-                <CardBtn text="Más Info" action={() => {}} />
+                {school.Telefono && school.Telefono.toString().trim() !== '' && (
+                    <CardBtn text="Llamar" action={handleCall} />
+                )}
+                <CardBtn text="Mapa" action={handleMap} />
+                <CardBtn text="Más Info" action={handleMoreInfo} />
             </div>
         </div>
     )

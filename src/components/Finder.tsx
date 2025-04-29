@@ -38,7 +38,7 @@ export function Finder({ zipCode, setZipCode, regimens, setRegimen, types, setTy
             <div className="step">
                 <div className="title">
                 <img src={Counter3} alt="" />
-                <span>Selecciona el tipo del centro (selección múltiple)</span>
+                <span>Selecciona el tipo del centro</span>
                 </div>
                 <div className="btns">
                     <Btn text="Infantil" value={SchoolType.Infantil} selected={types.includes(SchoolType.Infantil)} setSelected={setType}/>
